@@ -7,7 +7,7 @@ pipeline {
     environment {  // just like Docker, k8s laga ney Key:Value pair
         appVersion = ''
         REGION = "us-east-1"
-        ACC_ID = "3"
+        ACC_ID = "367749063374"
         PROJECT = "roboshop"
         COMPONENT = "catalogue"
     }
