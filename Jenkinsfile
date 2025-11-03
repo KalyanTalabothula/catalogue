@@ -6,6 +6,10 @@ pipeline {
 
     environment {  // just like Docker, k8s laga ney Key:Value pair
         appVersion = ''
+        REGION = "us-east-1"
+        ACC_ID = "3"
+        PROJECT = "roboshop"
+        COMPONENT = "catalogue"
     }
 
     options {
