@@ -4,9 +4,9 @@ pipeline {
         label 'AGENT-1'
     }
 
-   /*  environment {  // just like Docker, k8s laga ney Key:Value pair
-        COURSE = 'jenkins'
-    } */
+    environment {  // just like Docker, k8s laga ney Key:Value pair
+        appVersion = ''
+    }
 
     options {
         // Timeout counter starts AFTER agent is allocated, Within this time-line not Excuted then it is stopped. 
@@ -24,14 +24,16 @@ pipeline {
 
 // Build Session
     stages {
-        stage('Build') {
+        stage('Read package.json') {
             steps {
                 script {
-                    sh """
-                        echo 'Hello Building..'
-                        sleep 10
-                        env     
-                    """
+                    // Read the package.json file
+                    def packageJson = readJSON file: 'package.json'
+
+                    // Access specific properties, e.g., version
+                    // def version = packageJson.version --> def means define, no need define again here, we already defined in environment 
+                    appVersion = packageJson.version
+                    echo "Package Version: ${appVersion}"
                 }
             }
         }
